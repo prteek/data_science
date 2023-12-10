@@ -9,6 +9,7 @@ on:
 jobs:
   check-training-pipeline:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/strava_project'
     defaults:
       run:
         working-directory: strava_project/ml
@@ -34,6 +35,7 @@ jobs:
 
   deploy-training-docker:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/strava_project'
     defaults:
       run:
         working-directory: strava_project/ml
@@ -58,6 +60,7 @@ jobs:
 
   run-sagemaker-jobs-offline:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/strava_project'
     defaults:
       run:
         working-directory: strava_project/ml
@@ -90,6 +93,7 @@ jobs:
 
   deploy-engineering-stack:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/strava_project'
     defaults:
       run:
         working-directory: strava_project/engineering
@@ -131,6 +135,7 @@ jobs:
 
   deploy-ml-stack:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/strava_project'
     defaults:
       run:
         working-directory: strava_project/ml

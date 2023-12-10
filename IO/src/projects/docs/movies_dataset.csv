@@ -1,0 +1,338 @@
+release_year,runtime_mins,title
+1990,103.0,Home Alone
+1990,127.0,Ghost
+1990,181.0,Dances with Wolves
+1990,119.0,Pretty Woman
+1990,93.0,Teenage Mutant Ninja Turtles
+1990,135.0,The Hunt for Red October
+1990,113.0,Total Recall
+1990,124.0,Die Hard 2
+1990,105.0,Dick Tracy
+1990,111.0,Kindergarten Cop
+1991,84.0,Beauty and the Beast
+1991,137.0,Terminator 2: Judgment Day
+1991,143.0,Robin Hood: Prince of Thieves
+1991,118.0,The Silence of the Lambs
+1991,113.0,City Slickers
+1991,142.0,Hook
+1991,99.0,The Addams Family
+1991,99.0,Sleeping with the Enemy
+1991,105.0,Father of the Bride
+1991,85.0,The Naked Gun 2½: The Smell of Fear
+1992,90.0,Aladdin
+1992,120.0,Home Alone 2: Lost in New York
+1992,126.0,Batman Returns
+1992,118.0,Lethal Weapon 3
+1992,138.0,A Few Good Men
+1992,100.0,Sister Act
+1992,129.0,The Bodyguard
+1992,94.0,Wayne's World
+1992,127.0,Basic Instinct
+1992,128.0,A League of Their Own
+1993,127.0,Jurassic Park
+1993,125.0,Mrs. Doubtfire
+1993,130.0,The Fugitive
+1993,154.0,The Firm
+1993,105.0,Sleepless in Seattle
+1993,117.0,Indecent Proposal
+1993,128.0,In the Line of Fire
+1993,141.0,The Pelican Brief
+1993,195.0,Schindler's List
+1993,113.0,Cliffhanger
+1994,88.0,The Lion King
+1994,142.0,Forrest Gump
+1994,141.0,True Lies
+1994,97.0,The Santa Clause
+1994,91.0,The Flintstones
+1994,107.0,Dumb and Dumber
+1994,141.0,Clear and Present Danger
+1994,116.0,Speed
+1994,101.0,The Mask
+1994,154.0,Pulp Fiction
+1995,81.0,Toy Story
+1995,140.0,Apollo 13
+1995,121.0,Batman Forever
+1995,81.0,Pocahontas
+1995,90.0,Ace Ventura: When Nature Calls
+1995,130.0,GoldenEye
+1995,104.0,Jumanji
+1995,100.0,Casper
+1995,127.0,Se7en
+1995,128.0,Die Hard with a Vengeance
+1996,145.0,Independence Day
+1996,113.0,Twister
+1996,110.0,Mission: Impossible
+1996,139.0,Jerry Maguire
+1996,121.0,Ransom
+1996,103.0,101 Dalmatians
+1996,136.0,The Rock
+1996,95.0,The Nutty Professor
+1996,117.0,The Birdcage
+1996,149.0,A Time to Kill
+1997,194.0,Titanic
+1997,89.0,Bean
+1997,98.0,Men in Black
+1997,129.0,The Lost World: Jurassic Park
+1997,86.0,Liar Liar
+1997,124.0,Air Force One
+1997,121.0,Speed 2: Cruise Control
+1997,139.0,As Good as It Gets
+1997,126.0,Good Will Hunting
+1998,151.0,Armageddon
+1998,169.0,Saving Private Ryan
+1998,139.0,Godzilla
+1998,119.0,There's Something About Mary
+1998,95.0,A Bug's Life
+1998,87.0,Mulan
+1998,85.0,Doctor Dolittle
+1998,123.0,Shakespeare in Love
+1998,127.0,Lethal Weapon 4
+1998,103.0,The Truman Show
+1999,136.0,Star Wars: Episode I - The Phantom Menace
+1999,107.0,The Sixth Sense
+1999,92.0,Toy Story 2
+1999,136.0,The Matrix
+1999,88.0,Tarzan
+1999,122.0,American Beauty
+1999,116.0,Runaway Bride
+1999,84.0,Stuart Little
+1999,189.0,The Green Mile
+1999,81.0,The Blair Witch Project
+2000,123.0,Mission: Impossible II
+2000,155.0,Gladiator
+2000,143.0,Cast Away
+2000,127.0,What Women Want
+2000,82.0,Dinosaur
+2000,104.0,How the Grinch Stole Christmas
+2000,108.0,Meet the Parents
+2000,130.0,The Perfect Storm
+2000,104.0,X-Men
+2000,130.0,What Lies Beneath
+2001,152.0,Harry Potter and the Sorcerer's Stone
+2001,178.0,The Lord of the Rings: The Fellowship of the Ring
+2001,92.0,"Monsters, Inc."
+2001,90.0,Shrek
+2001,116.0,Ocean's Eleven
+2001,183.0,Pearl Harbor
+2001,130.0,The Mummy Returns
+2001,92.0,Jurassic Park III
+2001,120.0,Planet of the Apes
+2001,131.0,Hannibal
+2002,179.0,The Lord of the Rings: The Two Towers
+2002,161.0,Harry Potter and the Chamber of Secrets
+2002,121.0,Spider-Man
+2002,142.0,Star Wars: Episode II - Attack of the Clones
+2002,88.0,Men in Black II
+2002,133.0,Die Another Day
+2002,106.0,Signs
+2002,81.0,Ice Age
+2002,95.0,My Big Fat Greek Wedding
+2002,145.0,Minority Report
+2003,201.0,The Lord of the Rings: The Return of the King
+2003,100.0,Finding Nemo
+2003,138.0,The Matrix Reloaded
+2003,143.0,Pirates of the Caribbean: The Curse of the Black Pearl
+2003,101.0,Bruce Almighty
+2003,154.0,The Last Samurai
+2003,109.0,Terminator 3: Rise of the Machines
+2003,129.0,The Matrix Revolutions
+2003,134.0,X2: X-Men United
+2003,147.0,Bad Boys II
+2004,93.0,Shrek 2
+2004,142.0,Harry Potter and the Prisoner of Azkaban
+2004,127.0,Spider-Man 2
+2004,115.0,The Incredibles
+2004,127.0,The Passion of the Christ
+2004,124.0,The Day After Tomorrow
+2004,115.0,Meet the Fockers
+2004,163.0,Troy
+2004,90.0,Shark Tale
+2004,125.0,Ocean's Twelve
+2005,157.0,Harry Potter and the Goblet of Fire
+2005,140.0,Star Wars: Episode III - Revenge of the Sith
+2005,143.0,"The Chronicles of Narnia: The Lion, the Witch and the Wardrobe"
+2005,116.0,War of the Worlds
+2005,187.0,King Kong
+2005,86.0,Madagascar
+2005,120.0,Mr. & Mrs. Smith
+2005,115.0,Charlie and the Chocolate Factory
+2005,140.0,Batman Begins
+2005,118.0,Hitch
+2006,151.0,Pirates of the Caribbean: Dead Man's Chest
+2006,149.0,The Da Vinci Code
+2006,91.0,Ice Age: The Meltdown
+2006,144.0,Casino Royale
+2006,108.0,Night at the Museum
+2006,117.0,Cars
+2006,104.0,X-Men: The Last Stand
+2006,126.0,Mission: Impossible III
+2006,154.0,Superman Returns
+2006,108.0,Happy Feet
+2007,169.0,Pirates of the Caribbean: At World's End
+2007,138.0,Harry Potter and the Order of the Phoenix
+2007,139.0,Spider-Man 3
+2007,93.0,Shrek the Third
+2007,144.0,Transformers
+2007,111.0,Ratatouille
+2007,101.0,I Am Legend
+2007,87.0,The Simpsons Movie
+2007,124.0,National Treasure: Book of Secrets
+2008,152.0,The Dark Knight
+2008,122.0,Indiana Jones and the Kingdom of the Crystal Skull
+2008,92.0,Kung Fu Panda
+2008,92.0,Hancock
+2008,108.0,Mamma Mia!
+2008,89.0,Madagascar: Escape 2 Africa
+2008,106.0,Quantum of Solace
+2008,126.0,Iron Man
+2008,98.0,WALL·E
+2008,150.0,The Chronicles of Narnia: Prince Caspian
+2009,162.0,Avatar
+2009,153.0,Harry Potter and the Half-Blood Prince
+2009,94.0,Ice Age: Dawn of the Dinosaurs
+2009,149.0,Transformers: Revenge of the Fallen
+2009,158.0,2012
+2009,96.0,Up
+2009,130.0,The Twilight Saga: New Moon
+2009,128.0,Sherlock Holmes
+2009,138.0,Angels & Demons
+2009,100.0,The Hangover
+2010,103.0,Toy Story 3
+2010,108.0,Alice in Wonderland
+2010,146.0,Harry Potter and the Deathly Hallows: Part 1
+2010,148.0,Inception
+2010,95.0,Shrek Forever After
+2010,124.0,The Twilight Saga: Eclipse
+2010,124.0,Iron Man 2
+2010,100.0,Tangled
+2010,95.0,Despicable Me
+2010,98.0,How to Train Your Dragon
+2011,130.0,Harry Potter and the Deathly Hallows: Part 2
+2011,154.0,Transformers: Dark of the Moon
+2011,137.0,Pirates of the Caribbean: On Stranger Tides
+2011,117.0,The Twilight Saga: Breaking Dawn - Part 1
+2011,132.0,Mission: Impossible - Ghost Protocol
+2011,90.0,Kung Fu Panda 2
+2011,130.0,Fast Five
+2011,102.0,The Hangover Part II
+2011,103.0,The Smurfs
+2011,106.0,Cars 2
+2012,143.0,The Avengers
+2012,143.0,Skyfall
+2012,164.0,The Dark Knight Rises
+2012,169.0,The Hobbit: An Unexpected Journey
+2012,88.0,Ice Age: Continental Drift
+2012,115.0,The Twilight Saga: Breaking Dawn - Part 2
+2012,136.0,The Amazing Spider-Man
+2012,95.0,Madagascar 3: Europe's Most Wanted
+2012,142.0,The Hunger Games
+2012,106.0,Men in Black 3
+2013,102.0,Frozen
+2013,130.0,Iron Man 3
+2013,98.0,Despicable Me 2
+2013,161.0,The Hobbit: The Desolation of Smaug
+2013,146.0,The Hunger Games: Catching Fire
+2013,104.0,Monsters University
+2013,91.0,Gravity
+2013,143.0,Man of Steel
+2013,112.0,Thor: The Dark World
+2014,165.0,Transformers: Age of Extinction
+2014,144.0,The Hobbit: The Battle of the Five Armies
+2014,121.0,Guardians of the Galaxy
+2014,97.0,Maleficent
+2014,123.0,The Hunger Games: Mockingjay - Part 1
+2014,132.0,X-Men: Days of Future Past
+2014,136.0,Captain America: The Winter Soldier
+2014,130.0,Dawn of the Planet of the Apes
+2014,142.0,The Amazing Spider-Man 2
+2014,169.0,Interstellar
+2015,138.0,Star Wars: Episode VII - The Force Awakens
+2015,124.0,Jurassic World
+2015,137.0,Furious 7
+2015,141.0,Avengers: Age of Ultron
+2015,91.0,Minions
+2015,148.0,Spectre
+2015,95.0,Inside Out
+2015,131.0,Mission: Impossible - Rogue Nation
+2015,137.0,The Hunger Games: Mockingjay - Part 2
+2015,144.0,The Martian
+2016,147.0,Captain America: Civil War
+2016,89.0,Rogue One: A Star Wars Story
+2016,97.0,Finding Dory
+2016,108.0,Zootopia
+2016,106.0,The Jungle Book
+2016,87.0,The Secret Life of Pets
+2016,151.0,Batman v Superman: Dawn of Justice
+2016,132.0,Fantastic Beasts and Where to Find Them
+2016,108.0,Deadpool
+2016,123.0,Suicide Squad
+2017,152.0,Star Wars: Episode VIII - The Last Jedi
+2017,129.0,Beauty and the Beast
+2017,136.0,The Fate of the Furious
+2017,89.0,Despicable Me 3
+2017,119.0,Jumanji: Welcome to the Jungle
+2017,133.0,Spider-Man: Homecoming
+2017,123.0,Wolf Warrior 2
+2017,136.0,Guardians of the Galaxy Vol. 2
+2017,130.0,Thor: Ragnarok
+2017,141.0,Wonder Woman
+2018,149.0,Avengers: Infinity War
+2018,134.0,Black Panther
+2018,128.0,Jurassic World: Fallen Kingdom
+2018,118.0,Incredibles 2
+2018,143.0,Aquaman
+2018,134.0,Bohemian Rhapsody
+2018,112.0,Venom
+2018,147.0,Mission: Impossible - Fallout
+2018,119.0,Deadpool 2
+2018,134.0,Fantastic Beasts: The Crimes of Grindelwald
+2019,181.0,Avengers: Endgame
+2019,118.0,The Lion King
+2019,103.0,Frozen II
+2019,129.0,Spider-Man: Far from Home
+2019,123.0,Captain Marvel
+2019,122.0,Joker
+2019,141.0,Star Wars: Episode IX - The Rise of Skywalker
+2019,100.0,Toy Story 4
+2019,128.0,Aladdin
+2019,123.0,Jumanji: The Next Level
+2020,149.0,The Eight Hundred
+2020,117.0,Demon Slayer the Movie: Mugen Train
+2020,124.0,Bad Boys for Life
+2020,153.0,"My People, My Homeland"
+2020,150.0,Tenet
+2020,99.0,Sonic the Hedgehog
+2020,101.0,Dolittle
+2020,110.0,Legend of Deification
+2020,122.0,A Little Red Flower
+2020,95.0,The Croods: A New Age
+2021,148.0,Spider-Man: No Way Home
+2021,176.0,The Battle at Lake Changjin
+2021,128.0,"Hi, Mom"
+2021,163.0,No Time to Die
+2021,143.0,F9: The Fast Saga
+2021,136.0,Detective Chinatown 3
+2021,97.0,Venom: Let There Be Carnage
+2021,113.0,Godzilla vs. Kong
+2021,132.0,Shang-Chi and the Legend of the Ten Rings
+2021,110.0,Sing 2
+2022,192.0,Avatar: The Way of Water
+2022,130.0,Top Gun: Maverick
+2022,147.0,Jurassic World Dominion
+2022,126.0,Doctor Strange in the Multiverse of Madness
+2022,87.0,Minions: The Rise of Gru
+2022,161.0,Black Panther: Wakanda Forever
+2022,176.0,The Batman
+2022,118.0,Thor: Love and Thunder
+2022,153.0,Water Gate Bridge
+2022,102.0,Puss in Boots: The Last Wish
+2023,92.0,The Super Mario Bros. Movie
+2023,150.0,Guardians of the Galaxy Vol. 3
+2023,141.0,Fast X
+2023,140.0,Spider-Man: Across the Spider-Verse
+2023,135.0,The Little Mermaid
+2023,124.0,Ant-Man and the Wasp: Quantumania
+2023,114.0,Barbie
+2023,127.0,Transformers: Rise of the Beasts
+2023,169.0,John Wick: Chapter 4
+2023,163.0,Mission: Impossible - Dead Reckoning Part One

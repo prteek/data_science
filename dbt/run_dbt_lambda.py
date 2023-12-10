@@ -7,7 +7,7 @@ from github import Github
 GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 
 g = Github(login_or_token=GITHUB_TOKEN)
-repo = g.get_repo("PropertyLift/ds.bricklane")
+repo = g.get_repo("prteek/data_science")
 
 client = boto3.client("sagemaker")
 

@@ -1,0 +1,23 @@
+{
+  "app": "python3 app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "cdk.json",
+      "requirements*.txt",
+      "__pycache__/",
+      "**/__pycache__",
+      "cdk.out",
+      ".venv/",
+      "*.ipynb",
+      "local_credentials.env",
+      ".gitignore",
+      ".idea/",
+      "data",
+      ".github/",
+      ".jupyter/"
+    ]
+  }
+}

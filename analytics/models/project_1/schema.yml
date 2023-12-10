@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: simple_table
+    columns:
+
+      - name: id
+        tests:
+          - unique
+          - not_null

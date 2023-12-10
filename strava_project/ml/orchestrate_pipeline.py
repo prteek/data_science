@@ -1,3 +1,4 @@
+# %%
 import os
 import json
 import sagemaker
@@ -180,6 +181,7 @@ def save_pipeline_definition(pipeline: Pipeline, save_dir):
         f.write(pipeline_definition)
 
 
+# %%
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -197,9 +199,9 @@ if __name__ == "__main__":
 
     if execute_local_instance:
         local_compatible_steps = [
-            v
-            for k, v in pipeline._step_map.items()
-            if k not in ("deploy-model", "model-step-CreateModel")
+            p
+            for p in pipeline.steps
+            if p.name not in ("deploy-model", "model-step-CreateModel")
         ]
 
         local_pipeline = Pipeline(

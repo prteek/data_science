@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ml
+        working-directory: strava_project/ml
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ml
+        working-directory: strava_project/ml
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ml
+        working-directory: strava_project/ml
     needs: [check-training-pipeline, deploy-training-docker]
 
     steps:
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./engineering
+        working-directory: strava_project/engineering
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -133,7 +133,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ml
+        working-directory: strava_project/ml
     needs: [run-sagemaker-jobs-offline]
     steps:
       - uses: actions/checkout@v3

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: complex_table
+    columns:
+
+      - name: moving
+        tests:
+          - accepted_values:
+              values: ['true', 'false']

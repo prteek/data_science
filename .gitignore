@@ -1,0 +1,5 @@
+*credentials.env
+*.venv/
+.vscode/
+*.ipynb_checkpoints/
+*.DS_Store

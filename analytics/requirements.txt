@@ -1,0 +1,6 @@
+dbt
+dbt-athena-community
+
+aws-cdk-lib
+constructs
+boto3

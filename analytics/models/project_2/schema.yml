@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: complex_table
+    columns:
+
+      - name: moving
+        tests:
+          - not_null

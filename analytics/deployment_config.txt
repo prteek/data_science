@@ -1,0 +1,9 @@
+[project_2]
+trigger_name = trigger_project_2
+model = project_2
+cron = cron(0 8 * * ? *)
+
+[project_1]
+trigger_name = trigger_simple_table
+model = simple_table
+cron = cron(0 10 * * ? *)

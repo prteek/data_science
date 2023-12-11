@@ -1,0 +1,6 @@
+sagemaker
+boto3
+
+aws-cdk-lib
+constructs
+PyGithub

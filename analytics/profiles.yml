@@ -1,0 +1,12 @@
+dev:
+  outputs:
+    dev:
+      database: AwsDataCatalog
+      region_name: eu-west-1
+      s3_data_dir: s3://ds-dev-bkt
+      s3_staging_dir: s3://aws-athena-query-results-434616802091-eu-west-1
+      schema: default
+      threads: 1
+      type: athena
+
+  target: dev

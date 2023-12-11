@@ -1,0 +1,98 @@
+name: Automated deployment
+
+on:
+  push:
+    branches:
+      - 'production'
+      - 'dev/**'
+
+jobs:
+
+  dbt_deployment:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/dbt'
+    defaults:
+      run:
+        working-directory: ./dbt
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install CDK and Python dependencies
+        run: |
+          npm install -g aws-cdk
+          python -m pip install --upgrade pip
+          python -m pip install aws-cdk-lib constructs boto3
+
+
+      - name: Build and push docker
+        run: |
+          make all
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          ENV: dev
+          IMAGE_URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-1.amazonaws.com/dbt
+          SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
+          GITHUB_USER: "sagemaker-dbt"
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Deploy run-dbt lambda
+        run: |
+          cdk deploy RunDbt --require-approval never
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          ENV: dev
+          IMAGE_URI: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.eu-west-1.amazonaws.com/dbt
+          SAGEMAKER_EXECUTION_ROLE: ${{ secrets.SAGEMAKER_EXECUTION_ROLE }}
+          GITHUB_USER: "sagemaker-dbt"
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+
+
+  model_triggers_deployment:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev/analytics'
+    defaults:
+      run:
+        working-directory: ./analytics
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install CDK and Python dependencies
+        run: |
+          npm install -g aws-cdk
+          python -m pip install --upgrade pip
+          python -m pip install aws-cdk-lib constructs boto3
+
+
+      - name: Deploy model trigger rules
+        run: |
+          cdk deploy ModelTriggers --require-approval never
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          ENV: dev

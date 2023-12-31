@@ -89,6 +89,7 @@ class SaveJsonLambdaStack(Stack):
 
         api_key = api.add_api_key("ApiKey")
         plan.add_api_key(api_key)
+        plan.add_api_stage(stage=api.deployment_stage)
 
 
 # %%

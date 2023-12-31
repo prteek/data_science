@@ -71,7 +71,7 @@ class SaveJsonLambdaStack(Stack):
         )
 
         api_gateway_integration = apigw.LambdaIntegration(lambda_function, proxy=False, request_templates={
-                "application/json": '{ "payload": $input.json("$") }'
+                "application/json": '$input.json("$")'
             }, integration_responses=[integration_response])
 
         post_method = api.root.add_method('POST', api_gateway_integration)

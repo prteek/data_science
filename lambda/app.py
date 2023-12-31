@@ -1,6 +1,6 @@
 # %%
 from aws_cdk import (
-    Stack,
+    CfnOutput,
     App,
     aws_apigateway as apigw,
     Duration,
@@ -74,9 +74,21 @@ class SaveJsonLambdaStack(Stack):
                 "application/json": '$input.json("$")'
             }, integration_responses=[integration_response])
 
-        post_method = api.root.add_method('POST', api_gateway_integration)
+        post_method = api.root.add_method('POST', api_gateway_integration, api_key_required=True)
         # Add a Method Response
         post_method.add_method_response(status_code='200', response_models={'application/json': apigw.Model.EMPTY_MODEL})
+
+        # Create an API Key
+        plan = api.add_usage_plan("UsagePlan",
+                                  name="Basic",
+                                  throttle=apigw.ThrottleSettings(
+                                      rate_limit=10,
+                                      burst_limit=5
+                                  )
+                                  )
+
+        api_key = api.add_api_key("ApiKey")
+        plan.add_api_key(api_key)
 
 
 # %%

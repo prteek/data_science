@@ -1,0 +1,42 @@
+name: Automated deployment
+
+on:
+  push:
+    branches:
+      - 'production'
+      - 'lambda**'
+
+jobs:
+  lambda_deployments:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./lambda
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install CDK and Python dependencies
+        run: |
+          npm install -g aws-cdk
+          python -m pip install --upgrade pip
+          python -m pip install aws-cdk-lib constructs boto3
+
+      - name: Deploy run-dbt lambda
+        run: |
+          cdk deploy SaveJsonLambdaStack --require-approval never
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          ENV: dev
+

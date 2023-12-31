@@ -3,7 +3,7 @@ name: Automated deployment
 on:
   push:
     branches:
-      - 'production'
+      - 'main'
       - 'dev/**'
 
 jobs:

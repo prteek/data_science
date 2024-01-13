@@ -31,7 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install aws-cdk-lib constructs boto3
 
-      - name: Deploy run-dbt lambda
+      - name: Deploy save json lambda
         run: |
           cdk deploy SaveJsonLambdaStack --require-approval never
         env:
@@ -40,3 +40,12 @@ jobs:
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
           ENV: dev
 
+
+      - name: Deploy get latest data lambda
+        run: |
+          cdk deploy GetLastDataPointsLambdaStack --require-approval never
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          ENV: dev

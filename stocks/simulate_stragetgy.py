@@ -81,8 +81,14 @@ def buy_and_hold_strategy(macd):
     macd['buy'] = False
     macd['sell'] = False
     macd.loc[0, "buy"] = True
-    macd.loc[len(macd)-1, "sell"] = True
     return macd
+
+
+def weekly_buy_and_hold_strategy(macd, dayofweek=1):
+    macd['buy'] = (macd['date'].dt.dayofweek == dayofweek)
+    macd['sell'] = False
+    return macd
+
 
 #%%
 if __name__ == '__main__':
@@ -125,40 +131,49 @@ if __name__ == '__main__':
               .assign(date=lambda x: x['date'].dt.date)
               )
         macd = calculate_macd(df)
-        macd_strategy = simple_macd_strategy(macd)
-        balance = 100
-        balance_series = []
-        all_in = False
-        position = {}
-        active_position = None
+        macd_strategy = modified_macd_strategy(macd)
+        positions = {}
+        total_invested = 0
+        total_profit = 0
+        profit_series = []
+        invested_series = []
+        is_active = False
+        trade = 100
+        platform_fee = 0.45 # %
         for i, row in macd_strategy.iterrows():
-            balance_series.append(balance)
+            if row['buy']:
+                is_active = True
+                positions[row['date']] = dict()
+                positions[row['date']]['is_active'] = True
+                positions[row['date']]['buy_price'] = row['close']
+                positions[row['date']]['quantity'] = trade*(1-platform_fee/100) / row['close'] # platform fee 0.45%
+                total_invested += trade
 
-            if row['buy'] and (not active_position):
-                if all_in:
-                    trade = balance
-                else: trade = 100
-                active_position = row['date']
-                position[row['date']] = dict()
-                position[row['date']]['buy_price'] = row['close']
-                position[row['date']]['quantity'] = trade / row['close']
-                balance = balance - trade
+            if (row['sell'] and is_active) or ((i == len(macd_strategy)-1) and is_active):
+                for active_position in positions:
+                    if not positions[active_position]['is_active']: continue
+                    positions[active_position]['sell_price'] = row['close']
+                    positions[active_position]['gain'] = positions[active_position]['sell_price']*positions[active_position]['quantity']*(1-platform_fee/100) # Platform fee
+                    positions[active_position]['profit'] = positions[active_position]['gain'] - positions[active_position]['buy_price'] * positions[active_position]['quantity']
+                    positions[active_position]['close'] = row['date']
+                    positions[active_position]['is_active'] = False
+                    total_invested -= positions[active_position]['gain']
+                    total_profit += positions[active_position]['profit']
+                is_active = False
 
-            if row['sell'] and active_position:
-                position[active_position]['sell_price'] = row['close']
-                position[active_position]['profit'] = (row['close'] - position[active_position]['buy_price']) * position[active_position]['quantity']
-                balance += position[active_position]['sell_price']*position[active_position]['quantity']
-                active_position = None
+            profit_series.append(total_profit)
+            invested_series.append(total_invested)
+            profited = total_profit > 0
 
-            profited = balance > balance_series[0]
+        macd['profit'] = profit_series
+        macd['invested'] = invested_series
 
-        if active_position: balance = balance + trade
-        macd['balance'] = balance_series
-
-        p0 = ggplot(macd, aes(x='date')) + geom_line(aes(y='balance'), color='black') + ggtitle(f"{TICKR}, end-balance: {round(balance)}")
-        p1 = ggplot(macd, aes(x='date')) + geom_line(aes(y='macd'), color='red') + geom_line(aes(y='signal'), color='green') + geom_bar(aes(y='histogram'), color='blue', stat='identity')
-        p2 = ggplot(macd, aes(x='date')) + geom_line(aes(y='close'), color='black')
-        gggrid([p0, p1, p2], ncol=1).show()
+        p0 = ggplot(macd, aes(x='date')) + geom_line(aes(y='profit'), color='black') + \
+             ggtitle(f"{TICKR}, end-profit: {round(total_profit)}") #, total-invested: {round(total_invested)}, %: {round(total_profit/total_invested*100,2)}")
+        p1 = ggplot(macd, aes(x='date')) + geom_line(aes(y='invested'), color='blue')
+        p2 = ggplot(macd, aes(x='date')) + geom_line(aes(y='macd'), color='red') + geom_line(aes(y='signal'), color='green') + geom_bar(aes(y='histogram'), color='blue', stat='identity')
+        p3 = ggplot(macd, aes(x='date')) + geom_line(aes(y='close'), color='black')
+        gggrid([p0, p1, p2, p3], ncol=1).show()
 
     #%%
 

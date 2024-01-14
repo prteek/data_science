@@ -93,9 +93,9 @@ def weekly_buy_and_hold_strategy(macd, dayofweek=1):
 #%%
 if __name__ == '__main__':
     #%%
-    TICKRS = ['AAPL', 'NVDA', 'BRK-A', 'TSLA', 'TMUS', 'MCD', 'NKE', 'V',
+    TICKRS = ['AAPL', 'NVDA', 'BRK-B', 'TSLA', 'TMUS', 'MCD', 'NKE', 'V',
               'ADBE', 'GOOGL', 'AMZN', 'T', 'KO', 'DIS', 'JPM', 'MA', 'META', 'MSFT', 'PFE', 'PG']
-    start_date = "2023-01-01"
+    start_date = "2022-01-01"
     for TICKR in TICKRS:
         asset = yf.Ticker(TICKR)
         df = (asset
@@ -115,9 +115,11 @@ if __name__ == '__main__':
 
 
     #%%
-    start_date = "2023-01-01"
-    end_date = "2024-01-13"
-    for TICKR in TICKRS:
+    start_date = "2022-01-01"
+    end_date = "2022-10-13"
+    PORTFOLIO = ['AAPL', 'NVDA', 'BRK-B', 'TMUS', 'MCD', 'NKE', 'V', 'ADBE']
+    portfolio_profit = 0
+    for TICKR in PORTFOLIO:
         asset = yf.Ticker(TICKR)
         df = (asset
               .history(start=start_date, end=end_date)
@@ -130,28 +132,53 @@ if __name__ == '__main__':
                                'Volume': 'volume'})
               .assign(date=lambda x: x['date'].dt.date)
               )
-        macd = calculate_macd(df)
-        macd_strategy = modified_macd_strategy(macd)
+
         positions = {}
         total_invested = 0
         total_profit = 0
         profit_series = []
         invested_series = []
         is_active = False
-        trade = 100
-        platform_fee = 0.45 # %
+        trade = 20
+        platform_fee = 0.45 # [%]
+        macd = calculate_macd(df)
+        macd_strategy = modified_macd_strategy(macd)
+        sell_at_end = False
         for i, row in macd_strategy.iterrows():
+            if row['date'].dayofweek == 0: trade += 20
             if row['buy']:
+                # 1. Set that a position is active
+                # 2. Open a new position with current date as i.d.
+                # 3. Set the current position to active
+                # 4. Log buy price for current position
+                # 5. Calculate the quantity bought, adjusting for fee
+                # 6. Update the total amount under-investment currently
+                # 7. Update the amount left over to trade
+
                 is_active = True
                 positions[row['date']] = dict()
                 positions[row['date']]['is_active'] = True
                 positions[row['date']]['buy_price'] = row['close']
                 positions[row['date']]['quantity'] = trade*(1-platform_fee/100) / row['close'] # platform fee 0.45%
                 total_invested += trade
+                trade -= trade
 
-            if (row['sell'] and is_active) or ((i == len(macd_strategy)-1) and is_active):
+            if (row['sell'] and is_active) or ((i == len(macd_strategy)-1) and is_active and sell_at_end):
+                # If there is a sell signal and a position is open
+                # Or, this is the last data point in the period and there is a command to sell at the end of the period
+                # Check for all open positions and process them
                 for active_position in positions:
                     if not positions[active_position]['is_active']: continue
+                    # 1. Set the selling price for position
+                    # 2. Calculate the gain from sell adjusting for fee
+                    # 3. Calculate profit from adjusted gain
+                    # 4. Log closing price for the position
+                    # 5. Log closing date for the position
+                    # 6. Close the position
+                    # 7. Free gain amount from invested pool
+                    # 8. Add profit to running total
+                    # 9. Add gain amount to trade pool
+                    # 10. Finally, we declare all open positions are closed
                     positions[active_position]['sell_price'] = row['close']
                     positions[active_position]['gain'] = positions[active_position]['sell_price']*positions[active_position]['quantity']*(1-platform_fee/100) # Platform fee
                     positions[active_position]['profit'] = positions[active_position]['gain'] - positions[active_position]['buy_price'] * positions[active_position]['quantity']
@@ -159,6 +186,7 @@ if __name__ == '__main__':
                     positions[active_position]['is_active'] = False
                     total_invested -= positions[active_position]['gain']
                     total_profit += positions[active_position]['profit']
+                    trade += positions[active_position]['gain']
                 is_active = False
 
             profit_series.append(total_profit)
@@ -174,6 +202,10 @@ if __name__ == '__main__':
         p2 = ggplot(macd, aes(x='date')) + geom_line(aes(y='macd'), color='red') + geom_line(aes(y='signal'), color='green') + geom_bar(aes(y='histogram'), color='blue', stat='identity')
         p3 = ggplot(macd, aes(x='date')) + geom_line(aes(y='close'), color='black')
         gggrid([p0, p1, p2, p3], ncol=1).show()
+
+        portfolio_profit += total_profit
+
+    print(f"portfolio profit: {portfolio_profit}")
 
     #%%
 

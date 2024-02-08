@@ -115,11 +115,11 @@ if __name__ == '__main__':
 
 
     #%%
-    start_date = "2022-01-01"
-    end_date = "2022-10-13"
+    start_date = "2023-01-01"
+    end_date = "2024-01-13"
     PORTFOLIO = ['AAPL', 'NVDA', 'BRK-B', 'TMUS', 'MCD', 'NKE', 'V', 'ADBE']
     portfolio_profit = 0
-    for TICKR in PORTFOLIO:
+    for TICKR in TICKRS:
         asset = yf.Ticker(TICKR)
         df = (asset
               .history(start=start_date, end=end_date)
@@ -143,9 +143,10 @@ if __name__ == '__main__':
         platform_fee = 0.45 # [%]
         macd = calculate_macd(df)
         macd_strategy = modified_macd_strategy(macd)
+        weekly_top_up = True
         sell_at_end = False
         for i, row in macd_strategy.iterrows():
-            if row['date'].dayofweek == 0: trade += 20
+            if row['date'].dayofweek == 0 and weekly_top_up : trade += 20
             if row['buy']:
                 # 1. Set that a position is active
                 # 2. Open a new position with current date as i.d.

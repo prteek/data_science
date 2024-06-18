@@ -122,7 +122,7 @@ twython==3.9.1
 typing_extensions==4.12.2
 tzdata==2024.1
 uc-micro-py==1.0.3
-urllib3==2.2.2
+urllib3<1.27
 webencodings==0.5.1
 wrapt==1.16.0
 xyzservices==2024.6.0

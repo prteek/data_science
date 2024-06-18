@@ -9,6 +9,7 @@ tqdm
 #others
 beautifulsoup4
 yfinance
+six
 
 ## core scientific
 numpy

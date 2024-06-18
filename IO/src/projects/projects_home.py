@@ -1,7 +1,7 @@
 import streamlit as st
 from src.projects import drive_cycle_characterisation as dcc
 from src.projects import strava_project as sp
-
+from src.projects import public_transport_times as ptt
 
 def run():
     class home_page:
@@ -21,6 +21,7 @@ def run():
         "Home": home,
         "Strava": sp,
         "Drive cycle characterisation": dcc,
+        "Public transport times": ptt,
     }
 
     page = st.selectbox(label="Project list", options=list(projects.keys()))

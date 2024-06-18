@@ -29,6 +29,7 @@ plotly
 streamlit
 holoviews
 lets-plot
+streamlit-letsplot
 
 ## ML
 scikit-learn

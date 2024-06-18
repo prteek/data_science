@@ -6,6 +6,8 @@ import awswrangler as wr
 from sagemaker.predictor import Predictor
 from sagemaker.serializers import CSVSerializer
 
+wr.engine.set("python")
+wr.memory_format.set("pandas")
 
 boto3_session = boto3.Session(region_name="eu-west-1")
 PREDICTORS = [
@@ -34,7 +36,7 @@ def fetch_fitness_data(date_end="2021-04-01"):
 def run():
     st.title('Fitness simulation')
     st.markdown("""
-    Part of Strava metrics modelling project [repo](https://github.com/prteek/strava-project).
+    Part of Strava metrics modelling project [repo](https://github.com/prteek/data_science/tree/main/strava_project).
 """)
 
     # Get fitness data

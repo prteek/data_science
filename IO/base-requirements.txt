@@ -11,6 +11,8 @@ beautifulsoup4
 yfinance
 six
 traveltimepy
+pgeocode
+
 
 ## core scientific
 numpy

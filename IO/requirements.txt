@@ -91,6 +91,7 @@ partd==1.4.2
 pathos==0.3.2
 pathspec==0.12.1
 peewee==3.17.5
+pgeocode==0.5.0
 pillow==10.3.0
 platformdirs==4.2.2
 plotly==5.22.0

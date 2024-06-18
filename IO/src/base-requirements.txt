@@ -1,0 +1,49 @@
+## Working environment
+pip
+joblib
+python-dotenv
+black
+tqdm
+
+
+#others
+beautifulsoup4
+yfinance
+six
+
+## core scientific
+numpy
+pandas
+scipy
+dask[complete]
+lifelines
+duckdb
+
+## Visualisation
+seaborn
+matplotlib
+plotly
+streamlit
+holoviews
+
+## ML
+scikit-learn
+
+## twitter
+twython
+geopy
+
+## vision
+opencv-python
+
+## IMDB
+cinemagoer
+
+## AWS
+boto3
+awswrangler
+sagemaker
+
+
+## flickr
+flickr_api

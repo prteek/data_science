@@ -10,9 +10,12 @@ tqdm
 beautifulsoup4
 yfinance
 six
+traveltimepy
 
 ## core scientific
 numpy
+geopandas
+shapely
 pandas
 scipy
 dask[complete]
@@ -25,6 +28,7 @@ matplotlib
 plotly
 streamlit
 holoviews
+lets-plot
 
 ## ML
 scikit-learn

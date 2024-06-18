@@ -6,8 +6,8 @@ import awswrangler as wr
 from sagemaker.predictor import Predictor
 from sagemaker.serializers import CSVSerializer
 
-wr.engine.set("python")
-wr.memory_format.set("pandas")
+# wr.engine.set("python")
+# wr.memory_format.set("pandas")
 
 boto3_session = boto3.Session(region_name="eu-west-1")
 PREDICTORS = [

@@ -2,6 +2,7 @@ import streamlit as st
 from src.projects import drive_cycle_characterisation as dcc
 from src.projects import strava_project as sp
 from src.projects import public_transport_times as ptt
+from src.projects import euro_2024_modelling as e2m
 
 def run():
     class home_page:
@@ -19,6 +20,7 @@ def run():
 
     projects = {
         "Home": home,
+        'Euro 2024 model': e2m,
         "Strava": sp,
         "Drive cycle characterisation": dcc,
         "Public transport times": ptt,

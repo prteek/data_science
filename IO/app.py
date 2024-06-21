@@ -34,9 +34,10 @@ If you'd like to get in touch, please use the details below:
         st.markdown(""" ###  
 ---  
 [Prateek](https://www.linkedin.com/in/prteek/ "LinkedIn")  
-[Repository](https://github.com/prteek/IO/ "Github")
+[Repository](https://github.com/prteek/IO/ "Github")  
 
-    """)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z243K2E)    
+""")
 
 
 home = home_page()

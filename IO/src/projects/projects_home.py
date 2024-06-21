@@ -13,7 +13,9 @@ def run():
             st.title("Projects home")
             st.markdown("### Welcome ! ")
             st.write(
-                """This is a collection of short projects that I made as an effort in my Data Science journey."""
+                """This is a collection of short projects that I've made in my own time.  
+There is a slim chance you may also enjoy these.                 
+"""
             )
 
     home = home_page()

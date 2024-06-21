@@ -8,7 +8,6 @@ from scipy.stats import poisson
 import streamlit as st
 from lets_plot import LetsPlot
 from streamlit_letsplot import st_letsplot
-from IPython.display import display
 LetsPlot.setup_html()
 sql = lambda q: duckdb.sql(q).df()
 
@@ -104,7 +103,7 @@ def run():
 
     # EDA
 
-    display(sql("""select max(away_score)
+    print(sql("""select max(away_score)
                          , max(home_score)
                          , count(*) as total_games
                          , max(home_score-away_score)
@@ -112,8 +111,8 @@ def run():
                          from results
             """).T)
 
-    display(sql("select home_team, count(*) from results group by 1 order by 2 desc limit 5"))
-    display(sql("select home_team, sum(home_score) from results group by 1 order by 2 desc limit 5"))
+    print(sql("select home_team, count(*) from results group by 1 order by 2 desc limit 5"))
+    print(sql("select home_team, sum(home_score) from results group by 1 order by 2 desc limit 5"))
 
     #%%
 
@@ -176,7 +175,7 @@ def run():
     res.index = relevant_teams
     res['defence_scaled'] = res['defence']/res.loc['Gibraltar']['defence']  # Weakest defence
     res['attack_scaled'] = res['attack']*res.loc['Gibraltar']['defence']
-    display(res)
+    print(res)
 
     res.plot(x='attack_scaled', y='defence_scaled', grid=True, kind='scatter')
     plt.show()

@@ -253,10 +253,11 @@ def run():
                 team_mu = res.loc[team]['attack'] * res.loc[opponent]['defence']
                 opponent_mu = res.loc[opponent]['attack'] * res.loc[team]['defence']
                 goals_matrix = calculate_goals_matrix(team_mu, opponent_mu, n_goals)
-                scenario = np.argmax([np.sum(np.tril(goals_matrix, k=-1)), np.sum(np.triu(goals_matrix, k=1)), np.sum(np.diag(goals_matrix))])
-                points = points_map[scenario]
-                group_results.loc[team, opponent] = points
                 index_2d = np.unravel_index(np.argmax(goals_matrix), goals_matrix.shape)
+                # scenario = np.argmax([np.sum(np.tril(goals_matrix, k=-1)), np.sum(np.triu(goals_matrix, k=1)), np.sum(np.diag(goals_matrix))])
+                # points = points_map[scenario]
+                points = (index_2d[0] > index_2d[1])*3 + (index_2d[0] == index_2d[1])
+                group_results.loc[team, opponent] = points
                 group_results_goals.loc[team, opponent] = index_2d[0]
 
         group_table = group_results.sum(axis=1).sort_values(ascending=False).reset_index().rename({'index': 'team', 0: 'points'}, axis=1)

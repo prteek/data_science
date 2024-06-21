@@ -291,7 +291,28 @@ def run():
     p = plot_bivariate(team, opponent)
     st_letsplot(p);
 
+    st.markdown("---")
+    st.markdown("""
+The model is a Double Poisson model (first developed 1982) , where goals scored by each team are assumed to be Poisson distributed with a mean depending on attacking and defensive strengths.
+This model is simplistic yet insightful for the curious. Major shortcomings in the model are:  
+1. Assuming that there are effectively 2 matches going on at each end independently
+2. No accounting for the sequence of goals i.e. if Germany did score 2 goals first against Scotland, definitely coming back from that is hard
+3. No effect of chain of previous games and essentially each next game is considered independent of the previous one
+4. High weightage in strength calculation to games against very weak teams. Effectively due to more goals score in just 1 game inflate the overall strength value
 
+The model relies on the assumption that goals are scored according to a Poisson Process, an assumption seen in a wide variety of papers.  
+It is also more accurate in longer run prediction (i.e. across several matches) than any given outcome itself due to strength and weakness 
+being a representation of long run performance of the team.  
+HILL(1974) showed that football experts were able, before the season started, to predict with some success the final league table positions.  
+Therefore, certainly over a whole season, skill rather than chance dominates the game. This would probably be agreed by most people who watch the game of football; 
+that whilst in a single match, chance plays a considerable role (missed scoring opportunities, dubious offside deci- sions and shots hitting the crossbar can obviously drastically affect the result), 
+over several matches luck plays much less ofa part.   
+
+There are good reasons for thinking that the number of goals scored by a team in a match is likely to be a Poisson variable: possession is an important aspect of football, 
+and each time a team has the ball it has the opportunity to attack and score. 
+The probability p that an attack will result in a goal is, of course, small, but the number of times a team has possession during a match is very large.  
+If p is constant and attacks are inde- pendent, the number of goals will be Binomial and in these circumstances the Poisson approximation will apply very well.
+""")
 
 
 

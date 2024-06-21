@@ -18,9 +18,11 @@ LetsPlot.setup_html()
 #%%
 
 def run():
-    st.header("Public Transport Times")
+    st.header("Public Transport Range")
     st.text("""Identify area that is commutable within target time from the destination 
-using public transport""")
+using public transport within Great Britain. Can be useful to identify where to rent based on travel times to work.
+There may be small pockets of regions further in distance but similar in time that may offer lower prices.
+""")
     async def main():
         sdk = TravelTimeSdk(os.environ["TTPY_APPID"], os.environ["TTPY_APIKEY"])
         col1, col2 = st.columns(2)

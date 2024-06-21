@@ -15,7 +15,7 @@ sql = lambda q: duckdb.sql(q).df()
 
 def run():
     results_raw = sql("""select * 
-                        from read_csv_auto('src/projects/docs/football_results.csv', sample_size=-1) 
+                        from read_csv_auto('https://raw.githubusercontent.com/prteek/data_science/main/IO/src/projects/docs/football_results.csv', sample_size=-1) 
                         where home_score <> 'NA' -- remove future fixtures that have no scores yet
                         """)
 

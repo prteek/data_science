@@ -3,6 +3,7 @@ from src.projects import drive_cycle_characterisation as dcc
 from src.projects import strava_project as sp
 from src.projects import public_transport_range as ptr
 from src.projects import euro_2024_modelling as e2m
+from src.projects import imdb_movie_length as iml
 
 
 class About:
@@ -29,6 +30,7 @@ projects = {
     'Euro 2024 model': e2m,
     # "Strava": sp,
     "Drive cycle characterisation": dcc,
+    "Movies getting longer ?": iml,
     "Public transport range": ptr,
     "About": About(),
 }

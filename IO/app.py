@@ -12,7 +12,7 @@ class About:
     def run(self):
         st.title('Prateek')
         st.write("""Hi ! I am Prateek and this app is a collection of short projects that I've made in my own time.  
-There is a slim chance you may also enjoy these too.  
+There is a slim chance you may enjoy these too.  
 If you'd like to get in touch, please use the details below:
 
         """)

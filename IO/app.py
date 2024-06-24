@@ -37,6 +37,6 @@ projects = {
 project_titles = list(projects.keys())
 tabs = st.tabs(project_titles)
 
-for i, tab in enumerate(project_titles):
+for i, tab in enumerate(tabs):
     with tab:
         projects[project_titles[i]].run()

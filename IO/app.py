@@ -1,55 +1,42 @@
 import streamlit as st
-from src.projects import projects_home as ph
-from src.blogs import blog_home as bh
+from src.projects import drive_cycle_characterisation as dcc
+from src.projects import strava_project as sp
+from src.projects import public_transport_range as ptr
+from src.projects import euro_2024_modelling as e2m
 
 
-
-
-class home_page():
+class About:
     def __init__(self):
         return None
     
     def run(self):
         st.title('Prateek')
-        st.write("""Hi ! I am your just another friendly neighbourhood Data-Scientist.  
-Similar to your other friendly neighbourhood costumed crusaders, I believe that "with great power comes great responsibility".  
-So I rely on sound logic and principles of statistics, physics and math for designing and analysing stuff that matter.  
-In the past I have worked with companies like:
-* Suzuki
-* Jaguar Land Rover
-* Ford
-* Allison Transmission
-* Cloud Cycle 
-* Bricklane
-
-On problems ranging from track testing, Hybrid electric powertrain design, vehicle monitoring system, concrete quality degradation
-and real estate behaviour modelling.
-
-I have deep interest in Statistics, Machine learning and Python and I occasionally dabble in Astrophysics and Photography.  
-
+        st.write("""Hi ! I am Prateek and this app is a collection of short projects that I've made in my own time.  
+There is a slim chance you may also enjoy these too.  
 If you'd like to get in touch, please use the details below:
 
         """)
         
         st.markdown(""" ###  
 ---  
-[Prateek](https://www.linkedin.com/in/prteek/ "LinkedIn")  
+[Mail](mailto:prteek@icloud.com "Mail")  
 [Repository](https://github.com/prteek/IO/ "Github")  
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z243K2E)    
 """)
 
 
-home = home_page()
+projects = {
+    'Euro 2024 model': e2m,
+    "Strava": sp,
+    "Drive cycle characterisation": dcc,
+    "Public transport range": ptr,
+    "About": About(),
+}
 
-projects = {'Home':home,
-            'Projects':ph,
-            # 'Blog':bh,
-           }
+project_titles = list(projects.keys())
+tabs = st.tabs(project_titles)
 
-projects_tab, about_tab = st.tabs(["Projects", "About"])
-with projects_tab:
-    projects["Projects"].run()
-
-with about_tab:
-    projects["Home"].run()
+for i, tab in enumerate(project_titles):
+    with tab:
+        projects[project_titles[i]].run()

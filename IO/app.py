@@ -27,7 +27,7 @@ If you'd like to get in touch, please use the details below:
 
 projects = {
     'Euro 2024 model': e2m,
-    "Strava": sp,
+    # "Strava": sp,
     "Drive cycle characterisation": dcc,
     "Public transport range": ptr,
     "About": About(),

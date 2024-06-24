@@ -10,14 +10,13 @@ class About:
         return None
     
     def run(self):
-        st.title('Prateek')
-        st.write("""Hi ! I am Prateek and this app is a collection of short projects that I've made in my own time.  
+        st.caption("""Hi ! I am Prateek and this is a collection of my side projects.  
 There is a slim chance you may enjoy these too.  
 If you'd like to get in touch, please use the details below:
 
         """)
         
-        st.markdown(""" ###  
+        st.markdown("""
 ---  
 [Mail](mailto:prteek@icloud.com "Mail")  
 [Repository](https://github.com/prteek/IO/ "Github")  

@@ -20,7 +20,7 @@ If you'd like to get in touch, please use the details below:
         st.markdown("""
 ---  
 [Mail](mailto:prteek@icloud.com "Mail")  
-[Repository](https://github.com/prteek/IO/ "Github")  
+[Github](https://github.com/prteek/ "Github")  
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z243K2E)    
 """)

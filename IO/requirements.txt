@@ -105,6 +105,7 @@ pydantic==2.7.4
 pydantic_core==2.18.4
 pydeck==0.9.1
 Pygments==2.18.0
+pymc==5.16.1
 pyparsing==3.1.2
 pypng==0.20220715.0
 pyproj==3.6.1

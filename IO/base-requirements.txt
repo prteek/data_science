@@ -23,7 +23,7 @@ scipy
 dask[complete]
 lifelines
 duckdb
-pymc>=5.0
+pymc
 
 ## Visualisation
 seaborn

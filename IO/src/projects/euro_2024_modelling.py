@@ -6,6 +6,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import poisson
 import streamlit as st
+import pymc as pm
+import pytensor as pt
+import arviz as az
 from lets_plot import LetsPlot
 from streamlit_letsplot import st_letsplot
 LetsPlot.setup_html()
@@ -171,6 +174,18 @@ def run():
         i += 1
 
     #%%
+    with pm.Model() as model:
+        attacks = pm.Gamma('attacks', alpha=1, beta=10, shape=len(teams))
+        defences = pm.Gamma('defences', alpha=1, beta=10, shape=len(teams))
+        x = pt.tensor.concatenate([defences, attacks])
+        mu = abs(pt.tensor.matmul(np.block([[P, P_zeros], [P_zeros, P]]), x) * pt.tensor.concatenate([attacks, defences]))
+        scores = pm.Poisson('scores', mu=mu, observed=np.concatenate([f,c]))
+        samples = pm.sample()
+
+    Attacks = samples['posterior']['attacks'].values.mean(axis=0).mean(axis=0)
+    Defences = samples['posterior']['defences'].values.mean(axis=0).mean(axis=0)
+
+    #%%
     res = pd.DataFrame(np.c_[Attacks, Defences], columns=['attack', 'defence'])
     res.index = relevant_teams
     res['defence_scaled'] = res['defence']/res.loc['Gibraltar']['defence']  # Weakest defence
@@ -261,8 +276,9 @@ def run():
                 group_results_goals.loc[team, opponent] = index_2d[0]
 
         group_table = group_results.sum(axis=1).sort_values(ascending=False).reset_index().rename({'index': 'team', 0: 'points'}, axis=1)
-        group_results_goals_table = group_results_goals.sum(axis=1).sort_values(ascending=False).reset_index().rename({'index': 'team', 0: 'goals'}, axis=1)
-        group_table = group_table.merge(group_results_goals_table, on='team')
+        group_results_goals_table_for = group_results_goals.sum(axis=1).sort_values(ascending=False).reset_index().rename({'index': 'team', 0: 'gf'}, axis=1)
+        group_results_goals_table_against = group_results_goals.sum(axis=0).sort_values(ascending=False).reset_index().rename({'index': 'team', 0: 'ga'}, axis=1)
+        group_table = group_table.merge(group_results_goals_table_for.merge(group_results_goals_table_against, on='team'), on='team')
         multi_col = pd.MultiIndex.from_product([[group_name], group_table.columns])
         group_table.columns = multi_col
         league_table.append(group_table)
@@ -314,7 +330,4 @@ The probability p that an attack will result in a goal is, of course, small, but
 If p is constant and attacks are inde- pendent, the number of goals will be Binomial and in these circumstances the Poisson approximation will apply very well.
 """)
 
-
-
-
-
+    #%%

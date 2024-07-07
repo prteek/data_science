@@ -17,6 +17,7 @@ sql = lambda q: duckdb.sql(q).df()
 #%%
 
 def run():
+    #%%
     results_raw = sql("""select * 
                         from read_csv_auto('https://raw.githubusercontent.com/prteek/data_science/main/IO/src/projects/docs/football_results.csv', sample_size=-1) 
                         where home_score <> 'NA' -- remove future fixtures that have no scores yet
@@ -165,25 +166,52 @@ def run():
     Objective = lambda x: abs(np.matmul(np.block([[P, P_zeros], [P_zeros, P]]), x)*np.concatenate(
         [x[54:108], x[0:54]])  - np.concatenate([f, c]))
     Values = np.concatenate([f / np.sum(P, axis=0), c / np.sum(P, axis=0)])
-    i = 0
-    while i < 3:
-        Values = fsolve(Objective, Values)
-        print(np.sum(Objective(Values) ** 2))
-        Attacks = Values[54:108]
-        Defences = Values[0:54]
-        i += 1
+
+    # This is an inaccurate procedure. Bayesian estimation works better
+    # i = 0
+    # while i < 30:
+    #     Values = fsolve(Objective, Values)
+    #     print(np.sum(Objective(Values) ** 2))
+    #     Attacks = Values[54:108]
+    #     Defences = Values[0:54]
+    #     i += 1
 
     #%%
-    with pm.Model() as model:
-        attacks = pm.Gamma('attacks', alpha=1, beta=10, shape=len(teams))
-        defences = pm.Gamma('defences', alpha=1, beta=10, shape=len(teams))
-        x = pt.tensor.concatenate([defences, attacks])
-        mu = abs(pt.tensor.matmul(np.block([[P, P_zeros], [P_zeros, P]]), x) * pt.tensor.concatenate([attacks, defences]))
-        scores = pm.Poisson('scores', mu=mu, observed=np.concatenate([f,c]))
-        samples = pm.sample()
+    # with pm.Model() as model:
+    #     attacks = pm.Gamma('attacks', alpha=1, beta=10, shape=len(teams))
+    #     defences = pm.Gamma('defences', alpha=1, beta=10, shape=len(teams))
+    #     x = pt.tensor.concatenate([defences, attacks])
+    #     mu = abs(pt.tensor.matmul(np.block([[P, P_zeros], [P_zeros, P]]), x) * pt.tensor.concatenate([attacks, defences]))
+    #     scores = pm.Poisson('scores', mu=mu, observed=np.concatenate([f,c]))
+    #     samples = pm.sample()
+    #
+    # Attacks = samples['posterior']['attacks'].values.mean(axis=0).mean(axis=0)
+    # Defences = samples['posterior']['defences'].values.mean(axis=0).mean(axis=0)
 
-    Attacks = samples['posterior']['attacks'].values.mean(axis=0).mean(axis=0)
-    Defences = samples['posterior']['defences'].values.mean(axis=0).mean(axis=0)
+    # As derived from procedure above (to speed up UI these are made static
+    Attacks = np.array([0.8946672 , 0.36063157, 0.70919779, 1.55082653, 0.74963914,
+       0.49193287, 1.76961549, 0.7766647 , 0.86705977, 1.51158499,
+       0.60786162, 1.36087869, 1.52265679, 1.82090739, 0.60110769,
+       0.53428354, 0.96232748, 2.05178203, 1.12202079, 1.90140545,
+       0.26292153, 1.08943969, 1.24850168, 1.04072192, 1.0074415 ,
+       1.23574044, 1.34691291, 0.80690595, 0.83767495, 0.73211706,
+       0.12927259, 0.48095184, 0.83106703, 0.59676105, 0.75993354,
+       0.85213896, 2.01806447, 0.96276336, 0.72623736, 1.42256012,
+       1.32540181, 2.19128303, 0.94454334, 0.96639467, 1.26866483,
+       1.42088146, 1.16017194, 1.22436503, 1.93645955, 1.26611955,
+       1.5437568 , 1.5365987 , 1.17148151, 1.04888914])
+    Defences = np.array([0.8147479 , 1.64648403, 1.79557931, 0.85273041, 1.34768678,
+       1.35575936, 0.72161185, 1.27322875, 1.22639871, 0.48425927,
+       2.02916961, 0.92067695, 0.66315377, 0.65256927, 1.49874584,
+       1.47437939, 1.08059428, 0.59542775, 1.08729285, 0.75283702,
+       2.56851438, 0.71386028, 0.74022053, 1.3525455 , 0.76656072,
+       1.53456483, 0.75549004, 1.46151535, 1.08766904, 1.32690545,
+       2.1514894 , 1.48348289, 1.51217049, 1.84224044, 1.48253772,
+       1.12531549, 0.77178182, 1.32345393, 1.10851136, 0.83209154,
+       0.91553186, 0.5132934 , 0.66946538, 0.18155613, 0.97258459,
+       0.79033727, 0.84051252, 0.98958251, 0.501842  , 1.08501647,
+       0.86694473, 1.1576788 , 0.81129796, 0.95838372])
+
 
     #%%
     res = pd.DataFrame(np.c_[Attacks, Defences], columns=['attack', 'defence'])

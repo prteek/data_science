@@ -11,7 +11,7 @@ import geopandas as gpd
 import pgeocode
 import os
 from traveltimepy import Coordinates, PublicTransport, TravelTimeSdk
-
+from datetime import datetime, timedelta
 LetsPlot.setup_html()
 
 
@@ -35,10 +35,10 @@ distance but similar in time that may offer lower prices.
             nomi = pgeocode.Nominatim('gb')
             res = nomi.query_postal_code(destination_postcode.lower())
 
-
+        ref = datetime.today() - timedelta(days=1)
         response = await sdk.time_map_geojson_async(
             coordinates=[Coordinates(lat=res.latitude, lng=res.longitude)],
-            arrival_time=datetime(2024,6,17,9,0,0),
+            arrival_time=datetime(ref.year,ref.month,ref.day,9,0,0),
             travel_time=target_travel_time_mins*60,
             transportation=PublicTransport(type="public_transport"),
         )

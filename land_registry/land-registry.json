@@ -1,0 +1,8 @@
+{
+    "image_name": "land-registry",
+    "aws_profile": "personal",
+    "aws_region": "eu-west-1",
+    "python_version": "3.11",
+    "requirements_dir": "requirements.txt",
+    "easy_sm_module_dir": "land-registry"
+}

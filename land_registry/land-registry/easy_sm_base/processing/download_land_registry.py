@@ -137,7 +137,7 @@ if __name__ == '__main__':
     # lr_url: link for the land registry data complete dataset download.
     lr_url = 'http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-complete.csv'
     # chunk_size_in_MB: size of chunks to download in (minimum 5MB, or completion will fail)
-    chunk_size_in_MB = event.get('chunk_size', 5)
+    chunk_size_in_MB = 5
 
     key = 'raw_land_registry_transactions/' + lr_url.split('/')[-1]
 

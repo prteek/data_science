@@ -132,7 +132,7 @@ def complete_multipart_upload(key, bucket, upload_id, parts):
 
 #%%
 
-if __name__ == __main__:
+if __name__ == '__main__':
     #%%
     # lr_url: link for the land registry data complete dataset download.
     lr_url = 'http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-complete.csv'

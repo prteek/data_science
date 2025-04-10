@@ -10,7 +10,7 @@ wr.engine.set('python')
 
 boto3_session = boto3.Session(region_name='eu-west-1')
 
-LAND_REGISTRY_PATH = "s3://ds-dev-bkt/raw_land_registry_transactions"
+LAND_REGISTRY_PATH = "s3://ds-dev-bkt/land_registry"
 
 INPUT_SCHEMA = {
     "id": str,

@@ -139,7 +139,7 @@ if __name__ == '__main__':
     # chunk_size_in_MB: size of chunks to download in (minimum 5MB, or completion will fail)
     chunk_size_in_MB = 5
 
-    key = 'raw_land_registry_transactions/' + lr_url.split('/')[-1]
+    key = 'land_registry/' + lr_url.split('/')[-1]
 
     bucket = 'ds-dev-bkt'
     location = main(

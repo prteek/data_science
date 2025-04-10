@@ -34,6 +34,7 @@ INPUT_SCHEMA = {
 OUTPUT_SCHEMA = {
     "buy_transaction_id": "string",
     "buy_transaction_dt": "date",
+    "buy_transaction_month_dt": "date",
     "buy_price_gbp": "int",
     "is_standard_transaction_type": "int",
     "buy_transaction_type_code": "string",
@@ -174,6 +175,10 @@ def create_etl_dt(df):
     return df
 
 
+def create_buy_transaction_month_dt(df):
+    df = df.assign(buy_transaction_month_dt = lambda x: pd.to_datetime(x.purchase_date).dt.to_period('M').dt.to_timestamp())
+    return df
+
 #%%
 
 if __name__ == '__main__':
@@ -203,6 +208,7 @@ if __name__ == '__main__':
         .pipe(create_tenure)
         .pipe(create_is_new_build)
         .pipe(create_record_type)
+        .pipe(create_buy_transaction_month_dt)
         .pipe(create_etl_dt)
         .get(OUTPUT_SCHEMA.keys())
     )
@@ -223,6 +229,7 @@ if __name__ == '__main__':
         , schema_evolution=False
         , database='default'
         , table='land_registry_transactions'
+        , partition_cols=['post_town', 'buy_transaction_month_dt']
     )
 
     #%%

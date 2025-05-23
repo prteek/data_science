@@ -1,9 +1,10 @@
 library(this.path)
+setwd(here())
+renv::load()
+
 library(conflicted)
 library(targets)
 
-setwd(here())
-# renv::load()
 conflicts_prefer(dplyr::filter)
 
 tar_source("r/get_wage_data.r")

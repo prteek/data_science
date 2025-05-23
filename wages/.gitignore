@@ -1,3 +1,4 @@
 *_files/
 *.html
 *_cache/
+*.csv
